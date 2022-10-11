@@ -1,0 +1,15 @@
+{
+  "name": "programming-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "AmenaGrassEater.js",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Davo",
+  "license": "ISC"
+}
