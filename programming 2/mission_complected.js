@@ -1,9 +1,4 @@
-var matrix = [];
-var grassArr = [];
-var grassEaterArr = [];
-var amenaEaterArr = [];
-var grassBuilderArr = [];
-var BombArr = [];
+var socket = io()
 
 var matrixSize = prompt('Input Matrx size!(default = 30)')
 var side = prompt('Input the size of the square(default = 20)')
@@ -14,14 +9,7 @@ if (matrixSize == ''){
     matrixSize = 30
 }
 function setup() {
-    function matrixGenerator() {
-        for (let i = 0; i < matrixSize; i++) {
-            matrix[i] = []
-            for (let o = 0; o < matrixSize; o++) {
-                matrix[i][o] = 0;
-            }
-        }
-    }
+  
 
     function AddRandom(grassCount, grassEaterCount, AmenaEaterCount) {
         for (let i = 0; i < grassCount; i++) {
