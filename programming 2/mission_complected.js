@@ -1,66 +1,12 @@
 var socket = io()
 
-var matrixSize = prompt('Input Matrx size!(default = 30)')
-var side = prompt('Input the size of the square(default = 20)')
-if (side == ''){
-    side = 20
-}
-if (matrixSize == ''){
-    matrixSize = 30
-}
+var side = 20 
+
 function setup() {
-  
-
-    function AddRandom(grassCount, grassEaterCount, AmenaEaterCount) {
-        for (let i = 0; i < grassCount; i++) {
-            let x = Math.floor(random(matrixSize));
-            let y = Math.floor(random(matrixSize));
-            matrix[y][x] = 1;
-        }
-        for (let i = 0; i < grassEaterCount; i++) {
-            let x = Math.floor(random(matrixSize));
-            let y = Math.floor(random(matrixSize));
-            matrix[y][x] = 2;
-        }
-        for (let i = 0; i < AmenaEaterCount; i++) {
-            let x = Math.floor(random(matrixSize));
-            let y = Math.floor(random(matrixSize));
-            matrix[y][x] = 3;
-        }
-    }
-
-    matrixGenerator()
-    AddRandom(5, 5, 5)
+    createCanvas(20* side, 20* side);
+    // background('#acacac');
 
 
-
-
-    frameRate(9);
-    createCanvas(matrix[0].length * side, matrix.length * side);
-    background('#acacac');
-
-    for (let y = 0; y < matrix.length; y++) {
-        for (let x = 0; x < matrix[y].length; x++) {
-
-            if (matrix[y][x] == 1) {
-                let gr = new Grass(x, y);
-                grassArr.push(gr);
-            }
-            else if (matrix[y][x] == 2) {
-                let eater = new GrassEater(x, y);
-                grassEaterArr.push(eater);
-            }
-            else if (matrix[y][x] == 3) {
-                let amena = new AmenaGrassEater(x, y);
-                amenaEaterArr.push(amena);
-            }
-            else if (matrix[y][x] == 4) {
-                let build = new GrassBuilder(x, y);
-                grassBuilderArr.push(build);
-            }
-
-        }
-    }
 }
 function AddGrass() {
     for (let i = 0; i < 1; i++) {
@@ -80,9 +26,11 @@ function AddGrass() {
     }
 }
 function AddGrassEater() {
+    
     for (let i = 0; i < 1; i++) {
-        let x = Math.floor(random(matrixSize));
-        let y = Math.floor(random(matrixSize));
+        var emptyCells = super.choseCell(0)
+        let x = emptyCells[Math.floor(Math.random()* emptyCells.length )] ;
+        let y = emptyCells[Math.floor(Math.random()* emptyCells.length )] 
         matrix[y][x] = 2;
     }
     for (let y = 0; y < matrix.length; y++) {
@@ -148,7 +96,7 @@ function AddBomb() {
 }
 
 
-function draw() {
+function nkarel(matrixG) {
 
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
@@ -157,7 +105,7 @@ function draw() {
             if (matrix[y][x] == 1) {
                 fill("green");
                 rect(x * side, y * side, side, side);
-                text('', x * side, y * side + toBot);
+
             }
             else if (matrix[y][x] == 0) {
                 fill("#acacac");
@@ -166,22 +114,22 @@ function draw() {
             else if (matrix[y][x] == 2) {
                 fill("yellow");
                 rect(x * side, y * side, side, side);
-                text('', x * side, y * side + toBot);
+
             }
             else if (matrix[y][x] == 3) {
                 fill("red");
                 rect(x * side, y * side, side, side);
-                text('', x * side, y * side + toBot);
+ 
             }
             else if (matrix[y][x] == 4) {
                 fill("#0fdbff");
                 rect(x * side, y * side, side, side);
-                text('', x * side, y * side + toBot);
+
             }
             else if (matrix[y][x] == 5) {
                 fill("black");
                 rect(x * side, y * side, side, side);
-                text('', x * side, y * side + toBot);
+
             }
             else if (matrix[y][x] == 6) {
                 fill("orange");
@@ -192,7 +140,7 @@ function draw() {
 
         }
     }
-
+    socket.on('send matrix' , nkarel)
     for (let i = 0; i < grassArr.length; i++) {
         const grass = grassArr[i];
         grass.mul();

@@ -9,15 +9,15 @@ module.exports = class Bomb extends LivingCreature {
     }
     getNewCordinates() {
         this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-
+            // [this.x - 1, this.y - 1],
+            // [this.x, this.y - 1],
+            // [this.x + 1, this.y - 1],
+            // [this.x - 1, this.y],
+            // [this.x + 1, this.y],
+            // [this.x - 1, this.y + 1],
+            // [this.x, this.y + 1],
+            // [this.x + 1, this.y + 1]
+            super(x,y)
         ];
     }
     chooseCell(char, char1, char2, char3, char4) {

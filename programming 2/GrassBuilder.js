@@ -2,8 +2,7 @@ let LivingCreature = require("./LivingCreature");
 
 module.exports = class GrassBuilder extends LivingCreature {
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
+        super(x,y)
         this.directions = [
             [this.x, this.y - 1],
             [this.x - 1, this.y],
