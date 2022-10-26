@@ -6,9 +6,7 @@ module.exports = class GrassEater extends LivingCreature{
 
         this.energy = 20;
     }
-    getNewCordinates() {
-            super(x,y)
-    }
+
     chooseCell(char) {
         this.getNewCordinates();
         super.chooseCell(char)

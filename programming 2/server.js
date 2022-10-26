@@ -1,8 +1,10 @@
 var express = require('express');
 var app = express();
-var server = require('socket.io')(server)
+
+var server = require('http').Server(app)
 var io = require('socket.io')(server)
-var fs = require('fs')
+var fs = require('fs');
+
 app.use(express.static('.'))
 app.get('/', function (req, res) {
     res.redirect('index.html')
@@ -14,8 +16,8 @@ server.listen(3000, () => {
 
 
 
-function matrixGenerator(matrixSize,grassCount,grassEaterCount,AmenaEaterCount) {
-    var  matrix = [];
+function matrixGenerator(matrixSize, grassCount, grassEaterCount, AmenaEaterCount) {
+    var matrix = [];
     for (let i = 0; i < matrixSize; i++) {
         matrix[i] = []
         for (let o = 0; o < matrixSize; o++) {
@@ -30,13 +32,13 @@ function matrixGenerator(matrixSize,grassCount,grassEaterCount,AmenaEaterCount) 
         matrix[y][x] = 1;
     }
     for (let i = 0; i < grassEaterCount; i++) {
-        let x =  Math.round(Math.random() * 20);
-        let y =  Math.round(Math.random() * 20);
+        let x = Math.round(Math.random() * 20);
+        let y = Math.round(Math.random() * 20);
         matrix[y][x] = 2;
     }
     for (let i = 0; i < AmenaEaterCount; i++) {
-        let x =  Math.round(Math.random() * 20);
-        let y =  Math.round(Math.random() * 20);
+        let x = Math.round(Math.random() * 20);
+        let y = Math.round(Math.random() * 20);
         matrix[y][x] = 3;
     }
 }
@@ -44,9 +46,9 @@ function matrixGenerator(matrixSize,grassCount,grassEaterCount,AmenaEaterCount) 
 
 
 
-matrix = matrixGenerator(20,5,5,5)
+matrix = matrixGenerator(20, 5, 5, 5)
 console.log(matrix);
-io.sockets.emit('send matrix',  matrix)
+io.sockets.emit('send matrix', matrix)
 
 
 grassArr = [];
@@ -55,44 +57,66 @@ amenaEaterArr = [];
 grassBuilderArr = [];
 BombArr = [];
 
-Grass = require("./Grass")
-Grass = require("./amenaGrassEater")
-Grass = require("./Bomb")
-Grass = require("./GrassBuilder")
-Grass = require("./GrassEater")
+Grass = require("./grass")
+Amenagrasseater = require("./amenaGrassEater")
+Bomb = require("./bomb")
+Grassbuilder = require("./grassBuilder")
+Gras = require("./grassEater")
 
 
 
-function createobject (){
-    for (let y = 0; y < matrix.length; y++) {
-        for (let x = 0; x < matrix[y].length; x++) {
+function createobject() {
+        for (let y = 0; y < matrix.length; y++) {
+            for (let x = 0; x < matrix[y].length; x++) {
 
-            if (matrix[y][x] == 1) {
-                let gr = new Grass(x, y);
-                grassArr.push(gr);
+                if (matrix[y][x] == 1) {
+                    let gr = new Grass(x, y);
+                    grassArr.push(gr);
+                }
+                else if (matrix[y][x] == 2) {
+                    let eater = new GrassEater(x, y);
+                    grassEaterArr.push(eater);
+                }
+                else if (matrix[y][x] == 3) {
+                    let amena = new AmenaGrassEater(x, y);
+                    amenaEaterArr.push(amena);
+                }
+                else if (matrix[y][x] == 4) {
+                    let build = new GrassBuilder(x, y);
+                    grassBuilderArr.push(build);
+                }
+
             }
-            else if (matrix[y][x] == 2) {
-                let eater = new GrassEater(x, y);
-                grassEaterArr.push(eater);
+        }
+        io.sockets.emit('send matrix', matrix)
+    }
+function game() {
+        for (let i = 0; i < grassArr.length; i++) {
+            const grass = grassArr[i];
+            grass.mul();
+        }
+        for (let i = 0; i < grassEaterArr.length; i++) {
+            const eater = grassEaterArr[i];
+            eater.eat();
+        }
+        for (let i = 0; i < amenaEaterArr.length; i++) {
+            const amena = amenaEaterArr[i];
+            amena.eat();
+        }
+        for (let i = 0; i < grassBuilderArr.length; i++) {
+            const build = grassBuilderArr[i];
+            build.eat();
+        }
+        for (let i = 0; i < BombArr.length; i++) {
+            const bomb = BombArr[i];
+            bomb.mul();
+            function bab() {
+                bomb.babax()
             }
-            else if (matrix[y][x] == 3) {
-                let amena = new AmenaGrassEater(x, y);
-                amenaEaterArr.push(amena);
-            }
-            else if (matrix[y][x] == 4) {
-                let build = new GrassBuilder(x, y);
-                grassBuilderArr.push(build);
-            }
+            setTimeout(bab, 3000);
 
         }
+        io.sockets.emit('send matrix', matrix)
     }
-    io.sockets.emit('send matrix',  matrix)
-}
-function game(){
-    
-    
-    io.sockets.emit('send matrix',  matrix)
-}
-var statistic = {
 
-}
+setInterval(game, 200)

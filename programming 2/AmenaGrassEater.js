@@ -1,14 +1,12 @@
 let LivingCreature = require("./LivingCreature");
 
 module.exports = class AmenaGrassEater extends LivingCreature {
-    constructor(x, y) {
-        super(x,y)
+    constructor(x, y,index) {
+        super(x,y, index )
 
         this.energy = 20;
     }
-    getNewCordinates() {
-        super(x,y)
-    }
+
     chooseCell(char, char2) {
         this.getNewCordinates();
         let result = [];
