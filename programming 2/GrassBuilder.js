@@ -36,7 +36,7 @@ module.exports = class GrassBuilder extends LivingCreature {
         return result;
     }
     eat() {
-        let found = this.chooseCell(0);
+        let found = super.chooseCell(0);
         let exact = random(found)
 
         if (exact) {

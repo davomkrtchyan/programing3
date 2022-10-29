@@ -60,23 +60,23 @@ function setup() {
 //         }
 //     }
 // }
-// function AddBuilder() {
-//     for (let i = 0; i < 1; i++) {
-//         let x = Math.floor(random(matrixSize));
-//         let y = Math.floor(random(matrixSize));
-//         matrix[y][x] = 4;
+function AddBuilder() {
+    for (let i = 0; i < 1; i++) {
+        let x = Math.floor(random(matrixSize));
+        let y = Math.floor(random(matrixSize));
+        matrix[y][x] = 4;
 
-//     }
-//     for (let y = 0; y < matrix.length; y++) {
-//         for (let x = 0; x < matrix[y].length; x++) {
-//             if (matrix[y][x] == 4) {
-//                 let build = new GrassBuilder(x, y);
-//                 grassBuilderArr.push(build);
-//             }
+    }
+    for (let y = 0; y < matrix.length; y++) {
+        for (let x = 0; x < matrix[y].length; x++) {
+            if (matrix[y][x] == 4) {
+                let build = new GrassBuilder(x, y);
+                grassBuilderArr.push(build);
+            }
 
-//         }
-//     }
-// }
+        }
+    }
+}
 // function AddBomb() {
 //     for (let i = 0; i < 1; i++) {
 //         let x = Math.floor(random(matrixSize));

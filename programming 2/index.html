@@ -32,6 +32,7 @@
         display: flex;
         justify-content: center;
         overflow-x: hidden
+        
     }
 
     p {
@@ -49,19 +50,24 @@
     }
 
     .blue {
-        display: inline-block;
-        transition: all 0.2s ease-in;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-        color: #090909;
-        padding: 0.7em 1.7em;
-        font-size: 18px;
-        border-radius: 0.5em;
-        background: #066aeeef;
-        border: 1px solid #e8e8e8;
-        box-shadow: 6px 6px 12px #c5c5c5,
-            -6px -6px 12px #ffffff;
+        --glow-color: rgb(217, 176, 255);
+ --glow-spread-color: rgba(191, 123, 255, 0.781);
+ --enhanced-glow-color: rgb(231, 206, 255);
+ --btn-color: rgb(100, 61, 136);
+ border: .25em solid var(--glow-color);
+ padding: 1em 3em;
+ color: var(--glow-color);
+ font-size: 15px;
+ font-weight: bold;
+ background-color: var(--btn-color);
+ border-radius: 1em;
+ outline: none;
+ box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 1em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+ text-shadow: 0 0 .5em var(--glow-color);
+ position: relative;
+ transition: all 0.3s;
     }
 
     .red {
@@ -70,19 +76,24 @@
     }
 
     .black {
-        display: inline-block;
-        transition: all 0.2s ease-in;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-        color: #090909;
-        padding: 0.7em 1.7em;
-        font-size: 18px;
-        border-radius: 0.5em;
-        background: #e91c1c;
-        border: 1px solid #e8e8e8;
-        box-shadow: 6px 6px 12px #c5c5c5,
-            -6px -6px 12px #ffffff;
+        --glow-color: rgb(217, 176, 255);
+ --glow-spread-color: rgba(191, 123, 255, 0.781);
+ --enhanced-glow-color: rgb(231, 206, 255);
+ --btn-color: rgb(100, 61, 136);
+ border: .25em solid var(--glow-color);
+ padding: 1em 3em;
+ color: var(--glow-color);
+ font-size: 15px;
+ font-weight: bold;
+ background-color: var(--btn-color);
+ border-radius: 1em;
+ outline: none;
+ box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 1em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+ text-shadow: 0 0 .5em var(--glow-color);
+ position: relative;
+ transition: all 0.3s;
     }
 
     .yell {

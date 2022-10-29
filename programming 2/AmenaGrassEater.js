@@ -31,9 +31,8 @@ module.exports = class AmenaGrassEater extends LivingCreature {
         return result;
     }
     mul() {
-        let found = this.chooseCell(0);
-        let exact = random(found)
-
+        let found = super.chooseCell(0);
+        let exact = found[Math.floor(Math.random() * found.length)]
         if (exact && this.energy > 8) {
             let x = exact[0];
             let y = exact[1];
@@ -49,7 +48,7 @@ module.exports = class AmenaGrassEater extends LivingCreature {
     }
     eat() {
         let found = this.chooseCell(1, 2);
-        let exact = random(found)
+        let exact = found[Math.floor(Math.random() * found.length)]
 
         if (exact) {
             this.energy += 5;
@@ -81,8 +80,8 @@ module.exports = class AmenaGrassEater extends LivingCreature {
         }
     }
     move() {
-        let found = this.chooseCell(0);
-        let exact = random(found)
+        let found = super.chooseCell(0);
+        let exact = found[Math.floor(Math.random() * found.length)]
 
         if (exact) {
             let x = exact[0];
