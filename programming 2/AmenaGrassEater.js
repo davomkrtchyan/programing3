@@ -43,7 +43,7 @@ module.exports = class AmenaGrassEater extends LivingCreature {
 
             this.energy = 20;
         } else {
-            console.error('there is no way to multiply');
+            // console.error('there is no way to multiply');
         }
     }
     eat() {

@@ -5,126 +5,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tumo 2022</title>
-    
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+    <link rel="shortcut icon" href="earth.png" type="image/x-icon">  
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap" rel="stylesheet">
+    
+    <title>Tumo 2021</title>
 </head>
 <style>
-    .div {
-        position: absolute;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        padding: 0px 500px;
-    }
 
-    .button {
-        margin: auto;
-        margin-top: 5vh;
-        font-size: 20px;
-        text-align: center;
-        cursor: pointer;
-    }
 
-    body {
-        margin: 0px;
-        display: flex;
-        justify-content: center;
-        overflow-x: hidden
-        
-    }
-
-    p {
-        background-color: rgb(215, 255, 255);
-        width: 200px;
-        padding: 10px;
-        border-radius: 30px;
-        text-align: center;
-        border: 1px solid black;
-        user-select: none;
-    }
-
-    canvas {
-        margin-top: 15vh;
-    }
-
-    .blue {
-        --glow-color: rgb(217, 176, 255);
- --glow-spread-color: rgba(191, 123, 255, 0.781);
- --enhanced-glow-color: rgb(231, 206, 255);
- --btn-color: rgb(100, 61, 136);
- border: .25em solid var(--glow-color);
- padding: 1em 3em;
- color: var(--glow-color);
- font-size: 15px;
- font-weight: bold;
- background-color: var(--btn-color);
- border-radius: 1em;
- outline: none;
- box-shadow: 0 0 1em .25em var(--glow-color),
-        0 0 4em 1em var(--glow-spread-color),
-        inset 0 0 .75em .25em var(--glow-color);
- text-shadow: 0 0 .5em var(--glow-color);
- position: relative;
- transition: all 0.3s;
-    }
-
-    .red {
-        background-color: red;
-        color: aliceblue;
-    }
-
-    .black {
-        --glow-color: rgb(217, 176, 255);
- --glow-spread-color: rgba(191, 123, 255, 0.781);
- --enhanced-glow-color: rgb(231, 206, 255);
- --btn-color: rgb(100, 61, 136);
- border: .25em solid var(--glow-color);
- padding: 1em 3em;
- color: var(--glow-color);
- font-size: 15px;
- font-weight: bold;
- background-color: var(--btn-color);
- border-radius: 1em;
- outline: none;
- box-shadow: 0 0 1em .25em var(--glow-color),
-        0 0 4em 1em var(--glow-spread-color),
-        inset 0 0 .75em .25em var(--glow-color);
- text-shadow: 0 0 .5em var(--glow-color);
- position: relative;
- transition: all 0.3s;
-    }
-
-    .yell {
-        background-color: yellow;
-
-    }
-
-    .green {
-        background-color: green;
-        color: aliceblue;
-    }
-    body{
-        background-color: #e91c1c;
-    }
 </style>
-
 <body>
-
-    <script src="class.js"></script>
-    <script src="mission_complected.js"></script>
-    <div class="div">
-
-        <div class="button" onclick="AddBuilder()">
-            <p class="blue">Add Grass Builder</p>
-        </div>
+        <script src="mission_complected.js"></script>
 
 
-        <div class="button" onclick="AddBomb()">
-            <p class="black">Add Bomb</p>
-        </div>
-    </div>
+            <div class="button" onclick="AddGrass()"><p class="green">Add Grass</p></div>
+            <div class="button" onclick="AddBuilder()"><p class="blue">Add Grass Builder</p></div>
+            <div class="button" onclick="AddAmenaEater()"><p class="red">Add ԱմենաEater </p></div>
+            <div class="button" onclick="AddGrassEater()"><p class="yell">Add Grass Eater</p></div>
+            <div class="button" onclick="AddBomb()"><p class="black">Add Bomb</p></div>
+
 </body>
 
 </html>

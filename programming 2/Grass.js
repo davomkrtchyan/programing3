@@ -22,7 +22,7 @@ module.exports = class Grass extends LivingCreature {
 
             this.energy = 0;
         } else {
-            console.error('there is no way to multiply');
+            // console.error('there is no way to multiply');
         }
     }
 }
