@@ -1,9 +1,9 @@
-var clicks = 0
+var clicks = 1
 function decrementClicks(){
     clicks += 1
     console.log(clicks)
     if(clicks === 1){
-        document.body.style.background = "url(./images (1).jpg) no-repeat"
+        document.body.style.background = "url(./images.jpg) no-repeat"
         document.body.style.backgroundSize = "cover"
     }
     if(clicks === 2){
@@ -18,7 +18,7 @@ function decrementClicks(){
         document.body.style.background = "url(./1617427951_15-p-oboi-leto-plyazh-15.jpg) no-repeat"
         document.body.style.backgroundSize = "cover"
     }
-    if(clicks > 4){
+    if(clicks >= 4){
         clicks = 0
     }
 }
