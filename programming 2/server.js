@@ -246,6 +246,9 @@ var statistics = {};
 setInterval(function() {
     statistics.grass = grassArr.length;
     statistics.grassEater = grassEaterArr.length;
+       statistics.amenaEater = amenaEaterArr.length
+    statistics.grasBuilder = grassBuilderArr.length
+    statistics.bomb = BombArr.length
     fs.writeFile("statistics.json", JSON.stringify(statistics), function(){
 
     })
